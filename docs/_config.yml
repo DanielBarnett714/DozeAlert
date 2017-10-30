@@ -1,13 +1,13 @@
 name : Foundation5/github pages/Jykill starter
-brand : My Project
-description : This is the description of my project
+brand : Doze Alert
+description : Doze Alert Description
 keyword : 
-url : http://daigofuji.github.io/jekyll-foundation-6-starter/
+url : https://danielbarnett714.github.io/DozeAlert/
 email : daigo@daigofujiwara.com
-twitter : DaigoFuji
-github : DaigoFuji
-author : Daigo Fujiwara
-year : 2016
+twitter : Danielbarnett714
+github : Danielbarnett714
+author : Daniel Barnett/Alex Mai/Josh Churchin
+year : 2017
 markdown : kramdown
 exclude :
   - node_modules
