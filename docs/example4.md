@@ -6,41 +6,25 @@ permalink: /team/
 
 <h1 class="page-title">{{ page.title | escape }}</h1>
 
-<div class="section">
-    <h5>Borderless Table</h5> 
-    <div class="row">
-          <div class="col s12">
-            <table>
-              <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Item Name</th>
-                    <th>Item Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Alvin</td>
-                  <td>Eclair</td>
-                  <td>$0.87</td>
-                </tr>
-                <tr>
-                  <td>Alan</td>
-                  <td>Jellybean</td>
-                  <td>$3.76</td>
-                </tr>
-                <tr>
-                  <td>Jonathan</td>
-                  <td>Lollipop</td>
-                  <td>$7.00</td>
-                </tr>
-                <tr>
-                  <td>Shannon</td>
-                  <td>KitKat</td>
-                  <td>$9.99</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m4">
+        <div>
+            <h5 class="center">Daniel Barnett</h5>
+            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+        </div>
     </div>
+    <div class="col s12 m4">
+        <div class="icon-block">
+            <h5 class="center">Alex Mai</h5>
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <div class="icon-block">
+            <h5 class="center">Josh Churchin</h5>
+            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+        </div>
+    </div>
+  </div>
 </div>
