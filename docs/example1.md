@@ -122,7 +122,7 @@ permalink: /Proposal/
         </sup>
         <span class="c16">. By using Fast Fourier Transformation algorithm, we will be able to determine the frequency of each time period.
             Then we will plug those numbers into ratio</span>
-        <img src="images/image1.png">
+        <img src="https://danielbarnett714.github.io/DozeAlert/images/image1.png">
         <span class="c73">&nbsp;</span>
         <span class="c16">, as this ratio has been shown to be significantly higher when in a drowsy state</span>
         <sup class="c16">
@@ -148,7 +148,7 @@ permalink: /Proposal/
     </h1>
     <p class="c48">
         <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 355.00px; height: 573.50px;">
-            <img alt="Proposal.png" src="images/image5.png" style="width: 355.00px; height: 573.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+            <img alt="Proposal.png" src="https://danielbarnett714.github.io/DozeAlert/images/image5.png" style="width: 355.00px; height: 573.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                 title="">
         </span>
     </p>
@@ -219,7 +219,7 @@ permalink: /Proposal/
     </p>
     <p class="c18">
         <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 507.00px; height: 725.83px;">
-            <img alt="" src="images/image4.png" style="width: 507.00px; height: 725.83px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+            <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image4.png" style="width: 507.00px; height: 725.83px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                 title="">
         </span>
     </p>
@@ -1063,7 +1063,7 @@ permalink: /Proposal/
                 <td class="c17" colspan="1" rowspan="1">
                     <p class="c4">
                         <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 110.00px; height: 110.67px;">
-                            <img alt="" src="images/image6.jpg" style="width: 110.00px; height: 110.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                            <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image6.jpg" style="width: 110.00px; height: 110.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                                 title="">
                         </span>
                     </p>
@@ -1093,7 +1093,7 @@ permalink: /Proposal/
                 <td class="c17" colspan="1" rowspan="1">
                     <p class="c4">
                         <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 110.00px; height: 110.67px;">
-                            <img alt="" src="images/image3.jpg" style="width: 110.00px; height: 110.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                            <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image3.jpg" style="width: 110.00px; height: 110.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                                 title="">
                         </span>
                     </p>
@@ -1123,7 +1123,7 @@ permalink: /Proposal/
                 <td class="c17" colspan="1" rowspan="1">
                     <p class="c4">
                         <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 110.00px; height: 110.67px;">
-                            <img alt="" src="images/image7.jpg" style="width: 110.00px; height: 110.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                            <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image7.jpg" style="width: 110.00px; height: 110.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                                 title="">
                         </span>
                     </p>
@@ -1160,14 +1160,14 @@ permalink: /Proposal/
     </p>
     <p class="c32">
         <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 46.00px; height: 6.00px;">
-            <img alt="" src="images/image9.png" style="width: 46.00px; height: 6.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+            <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image9.png" style="width: 46.00px; height: 6.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                 title="short dash">
         </span>
     </p>
     <div>
         <p class="c36">
             <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 817.00px; height: 43.00px;">
-                <img alt="" src="images/image2.png" style="width: 817.00px; height: 43.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image2.png" style="width: 817.00px; height: 43.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                     title="footer">
             </span>
         </p>

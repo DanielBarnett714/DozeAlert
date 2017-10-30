@@ -10,23 +10,29 @@ permalink: /team/
   <div class="row">
     <div class="col s12 m4">
         <div>
-            <img alt="" src="images/image3.jpg"> 
-            <h5 class="center">Daniel Barnett</h5>
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image3.jpg"> 
+            <h4 class="center">Daniel Barnett</h4>
+            <h5 class="center">B.S. Computer Science, '18</h5>
+            <p class="light">Role: Research, Development, Design</p>
+            <p class="light">Skills: Basic Neuro Computation, Python, Java</p>
         </div>
     </div>
     <div class="col s12 m4">
         <div class="icon-block">
-            <img alt="" src="images/image6.jpg"> 
-            <h5 class="center">Alex Mai</h5>
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+            <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image6.jpg"> 
+            <h4 class="center">Alex Mai</h4>
+            <h5 class="center">B.A. Computer Science, Business, '18</h5>
+            <p class="light">Role: UI Design, Research, Development (backup)</p>
+            <p class="light">Skills: Java, basic Python, HTML, CSS, JS, Swift</p>
         </div>
     </div>
     <div class="col s12 m4">
         <div class="icon-block">
-            <img alt="" src="images/image7.jpg">         
-            <h5 class="center">Josh Churchin</h5>
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+            <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image7.jpg">   
+            <h4 class="center">Josh Churchin</h4>
+            <h5 class="center">B.S. Computer Science, '18</h5>
+            <p class="light">Role: Research, Development, Design</p>
+            <p class="light">Skills: Java, C, C++, HTML, CSS</p>
         </div>
     </div>
   </div>
