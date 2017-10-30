@@ -1,11 +1,11 @@
-title: Starter Template
-author: Panoramedia
-email: panoramedia@gmail.com
+title: Doze Alert
+author: Daniel Barnett/Alex Mai/Josh Churchin
+email: dbarnet4@u.rochester.edu
 description: > # this means to ignore newlines until "baseurl:"
-  A Site Starter Materialize Templates for Jekyll
+  An app that predicts whether or not you are awake from your brain waves.
 
-twitter_username: macrod68
-github_username:  macrod68
+twitter_username:
+github_username:  danielbarnett714
 
 sass:
     style: compressed

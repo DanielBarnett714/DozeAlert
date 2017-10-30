@@ -1,7 +1,7 @@
 ---
 layout: page
-title: CSS
-permalink: /css/
+title: Needfinding
+permalink: /needfinding/
 ---
 
 <h1 class="page-title">{{ page.title | escape }}</h1>
