@@ -1155,23 +1155,6 @@ permalink: /Proposal/
         <span class="c16">Note that we have a three-person team, thus there will be quite an overlap between some responsibilities. We did,
             however, attempt to separate overall responsibilities via the timeline and deliverables page.</span>
     </p>
-    <p class="c32 c67">
-        <span class="c6"></span>
-    </p>
-    <p class="c32">
-        <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 46.00px; height: 6.00px;">
-            <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image9.png" style="width: 46.00px; height: 6.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                title="short dash">
-        </span>
-    </p>
-    <div>
-        <p class="c36">
-            <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 817.00px; height: 43.00px;">
-                <img alt="" src="https://danielbarnett714.github.io/DozeAlert/images/image2.png" style="width: 817.00px; height: 43.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                    title="footer">
-            </span>
-        </p>
-    </div>
     <hr class="c74">
     <div>
         <p class="c12">
@@ -1212,19 +1195,6 @@ permalink: /Proposal/
                 <a class="c25" href="https://www.google.com/url?q=https://en.wikipedia.org/wiki/Beta_wave&amp;sa=D&amp;ust=1509406314156000&amp;usg=AFQjCNFYDta2l_5PTRcY_T6hXViIHFO4wg">https://en.wikipedia.org/wiki/Beta_wave</a>
             </span>
             <span class="c40 c43">, https://en.wikipedia.org/wiki/Alpha_wave</span>
-        </p>
-    </div>
-    <div class="c59">
-        <p class="c64">
-            <a href="#cmnt_ref1" id="cmnt1">[a]</a>
-            <span class="c38">Submission-1 Grade: 95/100</span>
-        </p>
-    </div>
-    <div class="c59">
-        <p class="c64">
-            <a href="#cmnt_ref2" id="cmnt2">[b]</a>
-            <span class="c38">You can always try to pivot toward both biometrics such as heart rate if the brain wave modeling completely falls
-                through.</span>
         </p>
     </div>
 </div>
