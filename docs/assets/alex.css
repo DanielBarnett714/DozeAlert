@@ -2,6 +2,10 @@ p, .c6, .c16, .c1, .c19, .c20, .c0 {
 	font-size: 1em;
 }
 
+section, .c11 {
+	padding-top: 0;
+}
+
 .survey-image{
 	max-width: 60%;
 	height: auto;
