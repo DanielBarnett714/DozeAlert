@@ -42,13 +42,6 @@ permalink: /Proposal/
     <p class="c21">
         <span class="c42 c61 c58 c70"></span>
     </p>
-    <h1 class="c11 c29" id="h.wj249xa64hfo">
-        <span class="c15"></span>
-    </h1>
-    <hr style="page-break-before:always;display:none;">
-    <h1 class="c11 c29" id="h.jtt03xnb5kvk">
-        <span class="c15"></span>
-    </h1>
     <h1 class="c11" id="h.6lop3yab93yz">
         <span>Problem Statement</span>
     </h1>
@@ -523,9 +516,6 @@ permalink: /Proposal/
     <p class="c21">
         <span class="c0"></span>
     </p>
-    <h1 class="c11 c29" id="h.vk364b3szhno">
-        <span class="c15"></span>
-    </h1>
     <p class="c21">
         <span class="c0"></span>
     </p>
@@ -1006,21 +996,6 @@ permalink: /Proposal/
         <span class="c6">Another alternative that was presented to us is to solely measure blinking patterns to detect drowsiness. Measuring
             eye blinks via a headset is possible and this could serve as an alternative. We could then measure blink rate
             as a determinant and alert the user.</span>
-    </p>
-    <p class="c31">
-        <span class="c6"></span>
-    </p>
-    <p class="c31">
-        <span class="c6"></span>
-    </p>
-    <p class="c31">
-        <span class="c6"></span>
-    </p>
-    <p class="c31">
-        <span class="c6"></span>
-    </p>
-    <p class="c31">
-        <span class="c6"></span>
     </p>
     <h1 class="c11" id="h.i85ws8se9wc5">
         <span>Group Members</span>
