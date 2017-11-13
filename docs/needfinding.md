@@ -17,13 +17,21 @@ permalink: /needfinding/
 
 <p style="margin-bottom:10px;">Around 55.77 percent of respondents said that they normally drive in New York state. This is no surprise because the University of Rochester is located in New York, and many of its students have cars on campus. The other 45 percent were fragmented across other states, and only one respondent stated that he or she drives mostly in Mumbai, India. This is relevant to us because we now know that the opinions that the people are expressing are mostly based on driving experiences in the United States.</p>
 
-<img src="../images/needfinding/hours-tired.jpg" alt="Bar chart of hours tired while driving">
-<img src="../images/needfinding/opinion-driving-drowsy.jpg" alt="Opinion on driving while drowsy">
+<div class="center">
+	<img src="../images/needfinding/hours-tired.jpg" alt="Bar chart of hours tired while driving" class="survey-image">
+</div>
+<div class="center">
+	<img src="../images/needfinding/opinion-driving-drowsy.jpg" alt="Opinion on driving while drowsy" class="survey-image">
+</div>
 
 <p style="margin-bottom:10px;">Another key insight that we discovered was that about 78.8 percent of the respondents stated that they spent at least one hour driving while drowsy, with one hour being the highest response (34.6 percent) and 2 hours (23.1 percent) being the second highest response. In addition, we also discovered that the majority of people believe that driving while drowsy is not okay. We posed the response to the question in form of a linear scale from Strongly Disagree to Strongly Agree. It turns out that 64 percent of the respondents disagreed or strongly disagreed with the statement that driving while drowsy is okay. And when asked about their opinion on whether driving while tired is a risk, 48 of the 52 individuals stated yes, with a variety of responses. Some said yes simply because it impairs reaction time, while others shared personal stories like knowing a friend who fell asleep on the wheel at 70+ miles per hour and hitting a median. All the feedback from these respondents point to the fact that there really is a need that is worth solving.</p>
 
-<img src="../images/needfinding/keep-phone.jpg" alt="Chart showing where most people keep their phones while driving">
-<img src="../images/needfinding/phone-attention.jpg" alt="Notification method that gets users most attention">
+<div class="center">
+	<img src="../images/needfinding/keep-phone.jpg" alt="Chart showing where most people keep their phones while driving" class="survey-image">
+</div>
+<div class="center">
+	<img src="../images/needfinding/phone-attention.jpg" alt="Notification method that gets users most attention" class="survey-image">
+</div>
 
 <p style="margin-bottom:10px;">Finally, another fact that we wanted to ascertain in our survey was how to best alert the user. Thus, we asked a question about where a person typically puts his or her phone while driving and the best method that his or her phone gets his or her attention. We discovered that 78.8 percent of the people surveyed keep their phone in the cup holders. And sound and phone vibration typically gets their attention the easiest. We will use these findings when developing our prototypes and final application.</p>
   
