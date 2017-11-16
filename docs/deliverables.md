@@ -4,6 +4,15 @@ title: Deliverables
 permalink: /deliverables/
 ---
 
+<script>
+    $(document).ready(function(){
+      $('.slider').bxSlider({
+      	mode: 'fade',
+    	captions: true,
+    	slideWidth: 600
+      });
+    });
+</script>	
 
 
 <h1 class="page-title">{{ page.title | escape }}</h1>
@@ -20,14 +29,3 @@ permalink: /deliverables/
 		</div>     
 	</div>
 </div>
-
-
-<script>
-    $(document).ready(function(){
-      $('.slider').bxSlider({
-      	mode: 'fade',
-    	captions: true,
-    	slideWidth: 600
-      });
-    });
-</script>	
