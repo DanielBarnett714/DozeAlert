@@ -2,3 +2,13 @@
 <script src="{{ "js/jquery.min.js" | relative_url }}"></script>
 <script src="{{ "js/materialize.min.js" | relative_url }}"></script>
 <script src="{{ "js/init.js" | relative_url }}"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+    $(document).ready(function(){
+      $('.slider').bxSlider({
+      	mode: 'fade',
+    	captions: true,
+    	slideWidth: 600
+      });
+    });
+</script>	
