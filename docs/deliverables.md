@@ -10,7 +10,7 @@ permalink: /deliverables/
 ## Basic Sketch
 
 <div class="center">
-	<img src="../images/prototyping/basic_sketch.JPG" alt="notebook sketch">
+	<img src="../images/prototyping/basic_sketch.JPG" alt="notebook sketch" style="max-width: 500px">
 </div>
 <p style="margin-top: 20px;">This was our initial sketch of the application. It showcases the minimal functions of our requirements:</p>
 <ol>
