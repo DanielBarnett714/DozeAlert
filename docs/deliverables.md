@@ -56,16 +56,19 @@ permalink: /deliverables/
 	</div>    
 </div>
 
-<p>Key takeaways from testing:</p>
+<h3>Key takeaways from testing:</h3>
 1. Users found that our design was very simple and intuitive to use, especially because of the two simple buttons.
 2. Users reported that phone vibration got their attention the easiest.
 3. Overall, users liked the application, with the majority giving it a rating of 4 or higher on a 5-point scale.
 4. Initially, some users reported that they did not know how to go back to the home screen. We iterated by replacing the profile menu with a hamburger menu. We made the hamburger menu more apparent, and subsequent testers did not have the same issue.
-5. Users liked the idea of having a sound alarm telling them that they are drowsy.
+5. Users liked the idea of having a sound alarm telling them that they are drowsy.  
 
 <br>
 <hr>
 
 ## Low-fidelity Midsemester Presentation
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQPAa4nokXTPQFfT-eCQYIllq-jCyIo4Gjop-pcxorzm_HY1DUA5_EOpiNwAItIKtI9EcEeGpqOnU5K/embed?start=false&loop=false&delayms=10000" frameborder="0" width="1440" height="839" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQPAa4nokXTPQFfT-eCQYIllq-jCyIo4Gjop-pcxorzm_HY1DUA5_EOpiNwAItIKtI9EcEeGpqOnU5K/embed?start=false&loop=false&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+<br>
+<hr>
