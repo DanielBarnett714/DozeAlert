@@ -12,7 +12,12 @@ permalink: /deliverables/
 <div class="center">
 	<img src="../images/prototyping/basic_sketch.JPG" alt="notebook sketch">
 </div>
-<p>This was our initial sketch of the application. It showcases the minimal functions of our requirements: have the user launch the application, allow the user to start and stop recording, and show the status of recording.</p>
+<p style="margin-top: 20px;">This was our initial sketch of the application. It showcases the minimal functions of our requirements:</p>
+<ol>
+	<li>Have the user launch the application</li>
+	<li>Allow the user to start and stop recording</li>
+	<li>Display the state of recording and detection result</li>
+</ol>
 
 <hr>
 
@@ -47,6 +52,6 @@ permalink: /deliverables/
 		<img src="../images/prototyping/BookScanCenter_9.png" title="History page where users can see when they are most drowsy" alt="History page" height="400px">         
 	</div> 
 	<div>             
-		<img src="../images/prototyping/BookScanCenter_2.png" title="Help Page" alt="Help Page" height="400px">         
+		<img src="../images/prototyping/BookScanCenter_10.png" title="Help Page" alt="Help Page" height="400px">         
 	</div>    
 </div>

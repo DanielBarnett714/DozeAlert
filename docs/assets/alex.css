@@ -10,3 +10,7 @@ section, .c11 {
 	max-width: 60%;
 	height: auto;
 }
+
+.bx-wrapper {
+	margin: auto;
+}
