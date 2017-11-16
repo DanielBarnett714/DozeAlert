@@ -4,16 +4,6 @@ title: Deliverables
 permalink: /deliverables/
 ---
 
-<script>
-    $(document).ready(function(){
-      $('.slider').bxSlider({
-      	mode: 'fade',
-    	captions: true,
-    	slideWidth: 600
-      });
-    });
-</script>	
-
 
 <h1 class="page-title">{{ page.title | escape }}</h1>
 
@@ -22,10 +12,10 @@ permalink: /deliverables/
 <div class="center">          
 	<div class="slider">                  
 		<div>
-			<img src="../images/prototyping/BookScanCenter_1.png" title="Home screen" alt="Home screen">         
+			<img src="../images/prototyping/BookScanCenter_1.png" title="Home screen" alt="Home screen" height="400px">         
 		</div>         
 		<div>             
-			<img src="../images/prototyping/BookScanCenter_2.png" title="Application Launched" alt="App launched">         
+			<img src="../images/prototyping/BookScanCenter_2.png" title="Application Launched" alt="App launched" height="400px">         
 		</div>     
 	</div>
 </div>
