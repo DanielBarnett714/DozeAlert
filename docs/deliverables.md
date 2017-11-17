@@ -62,7 +62,7 @@ permalink: /deliverables/
 3. Overall, users liked the application, with the majority giving it a rating of 4 or higher on a 5-point scale.
 4. Initially, some users reported that they did not know how to go back to the home screen. We iterated by replacing the profile menu with a hamburger menu. We made the hamburger menu more apparent, and subsequent testers did not have the same issue.
 5. Users liked the idea of having a sound alarm telling them that they are drowsy.  
-
+<br><br>
 For more information on the evaluation of the paper prototype, please visit [this link](https://drive.google.com/file/d/1OSQ1SdMF6oObkApD-TcTJ2zRFK4-cG2N/view?usp=sharing).
 <br>  
 <hr>
