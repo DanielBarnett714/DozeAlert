@@ -6,6 +6,12 @@ section, .c11 {
 	padding-top: 0;
 }
 
+footer {
+	background: #E8EEF4;
+	padding: 5em 5em 10em 5em;
+	color: #7c8081;
+}
+
 .survey-image{
 	max-width: 60%;
 	height: auto;
