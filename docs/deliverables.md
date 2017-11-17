@@ -62,8 +62,8 @@ permalink: /deliverables/
 3. Overall, users liked the application, with the majority giving it a rating of 4 or higher on a 5-point scale.
 4. Initially, some users reported that they did not know how to go back to the home screen. We iterated by replacing the profile menu with a hamburger menu. We made the hamburger menu more apparent, and subsequent testers did not have the same issue.
 5. Users liked the idea of having a sound alarm telling them that they are drowsy.  
-
-<br>
+  
+<br>  
 <hr>
 
 ## Low-fidelity Midsemester Presentation
@@ -72,3 +72,35 @@ permalink: /deliverables/
 
 <br>
 <hr>
+
+## WireFrame
+
+<div class="slider">                  
+	<div>
+		<img src="../images/wireframe/launch-screen.png" title="Launch Screen" alt="Launch Screen" max-height="400px"> 
+	</div>         
+	<div>             
+		<img src="../images/wireframe/app-loaded.png" title="Application loaded and seek agreement to ToS" alt="App loaded" max-height="400px">         
+	</div>
+	<div>             
+		<img src="../images/wireframe/home-screen.png" title="Application Home Screen" alt="Home Screen" max-height="400px">         
+	</div>
+	<div>             
+		<img src="../images/wireframe/record-pressed.png" title="Start Recording button pressed" alt="start recording button pressed" max-height="400px">         
+	</div> 
+	<div>             
+		<img src="../images/wireframe/navbar.png" title="Navigation button pressed" alt="Navigation button pressed" max-height="400px">         
+	</div> 
+	<div>             
+		<img src="../images/wireframe/settings.png" title="Settings page" alt="Settings page" max-height="400px">         
+	</div> 
+	<div>             
+		<img src="../images/wireframe/help.png" title="Help page" alt="Help page" max-height="400px">         
+	</div> 
+	<div>             
+		<img src="../images/wireframe/report-pressed.png" title="Report pressed. A dialog box appears and launches sending an email" alt="Report pressed" max-height="400px">         
+	</div> 
+	<div>             
+		<img src="../images/wireframe/what-bci.png" title="What is OpenBCI? pressed. Launches a web page." alt="What is OpenBCI? pressed" max-height="400px">         
+	</div>    
+</div>
