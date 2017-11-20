@@ -59,14 +59,32 @@
                android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    <ExpandableListView
-        android:id="@+id/gatt_services_list"
-        android:layout_width="match_parent"
-        android:layout_height="255dp" />
 
-    <com.jjoe64.graphview.GraphView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dip"
-        android:id="@+id/graph"
-        android:layout_weight="0.3"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Start" />
+
+    </LinearLayout>
+    <TextView
+        android:paddingTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Sensitivity" />
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:max="200"
+        android:progress="100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

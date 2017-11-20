@@ -29,9 +29,11 @@ import android.bluetooth.BluetoothManager
 import android.bluetooth.BluetoothProfile
 import android.content.Context
 import android.content.Intent
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
+import unsigned.toUInt
 
 import java.util.Arrays
 import java.util.UUID
@@ -46,7 +48,9 @@ class BluetoothLeService : Service() {
     private var mBluetoothAdapter: BluetoothAdapter? = null
     private var mBluetoothDeviceAddress: String? = null
     private var mBluetoothGatt: BluetoothGatt? = null
+    var isTraining = false
     private var mConnectionState = STATE_DISCONNECTED
+    var dataProcessing: DataProcessing = DataProcessing(this)
 
     // Implements callback methods for GATT events that the app cares about.  For example,
     // connection change and services discovered.
@@ -114,18 +118,22 @@ class BluetoothLeService : Service() {
 
         // This is special handling for the Heart Rate Measurement profile.  Data parsing is
         // carried out as per profile specifications:
-        // http://developer.bluetooth.org/gatt/characteristics/Pages/CharacteristicViewer.aspx?u=org.bluetooth.characteristic.heart_rate_measurement.xml
+        // http://developer.bluetooth.org/gadatt/characteristics/Pages/CharacteristicViewer.aspx?u=org.bluetooth.characteristic.heart_rate_measurement.xml
 
             // For all other profiles, writes the data formatted in HEX.
             val data = characteristic.value
             if (data != null && data.isNotEmpty()) {
-                val stringBuilder = StringBuilder(data.size)
-                for (byteChar in data) {
-                    stringBuilder.append(byteChar.toInt())
-                    stringBuilder.append(" ")
-
+                val dataBuffer: IntArray = IntArray(data.size, {i -> 0})
+                var j = 0
+                for (dataByte in data) {
+                    dataBuffer[j] = dataByte.toUInt()
+                    j++
                 }
-                intent.putExtra(EXTRA_DATA, stringBuilder.toString())
+
+
+
+                val drowsinessValue: String = dataProcessing.processData(dataBuffer, isTraining).toString()
+                intent.putExtra(EXTRA_DATA, drowsinessValue)
             }
 
         sendBroadcast(intent)
@@ -258,15 +266,6 @@ class BluetoothLeService : Service() {
         mBluetoothGatt!!.readCharacteristic(characteristic)
     }
 
-    fun onCharacteristicWrite(gatt: BluetoothGatt,
-                              characteristic: BluetoothGattCharacteristic,
-                              status: Int) {
-        if (mBluetoothAdapter == null || mBluetoothGatt == null) {
-            Log.w(TAG, "BluetoothAdapter not initialized")
-            return
-        }
-
-    }
 
     fun writeCharacteristic(characteristic: BluetoothGattCharacteristic) {
         //pre-prepared characteristic to write to

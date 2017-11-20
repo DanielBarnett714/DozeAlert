@@ -31,24 +31,20 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.ServiceConnection
-import android.graphics.Color
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ExpandableListView
-import android.widget.SimpleExpandableListAdapter
-import android.widget.TextView
-import android.widget.Toast
-import com.jjoe64.graphview.GraphView
-import com.jjoe64.graphview.series.DataPoint
-import com.jjoe64.graphview.series.DataPointInterface
-import com.jjoe64.graphview.series.LineGraphSeries
-import java.lang.reflect.Array
-import java.math.BigInteger
+import android.widget.*
 import java.util.*
+import android.widget.SeekBar
+import android.widget.Toast
+
+
+
+
 
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
@@ -58,7 +54,9 @@ import java.util.*
  */
 class DeviceControlActivity : Activity() {
     private var mConnectionState: TextView? = null
-    private var mDataField: TextView? = null
+    private var mLoadingText: TextView? = null
+    private var mStartButton: Button? = null
+    private var mTrainButton: Button? = null
     private var mDeviceName: String? = null
     private var mDeviceAddress: String? = null
     private var mGattServicesList: ExpandableListView? = null
@@ -66,19 +64,14 @@ class DeviceControlActivity : Activity() {
     private var mGattCharacteristics: ArrayList<ArrayList<BluetoothGattCharacteristic>>? = ArrayList()
     private var mConnected = false
     private var mNotifyOnRead: BluetoothGattCharacteristic? = null
-    var graph: GraphView? = null
-    var channel1 = LineGraphSeries<DataPointInterface>()
-    var channel2 = LineGraphSeries<DataPointInterface>()
+
     private var mIsDeviceGanglion: Boolean = false
     private var mIsDeviceCyton: Boolean = false
-    private val mIsUnknownCharacteristic: Boolean = false
-    var amount = 0.0
-    var tStart = System.currentTimeMillis()
-    private var isStreaming = false
+    var pastData = ""
+    var simpleSeekBar: SeekBar? = null
     private val LIST_NAME = "NAME"
     private val LIST_UUID = "UUID"
-    var channel1Queue: LinkedList<Complex> = LinkedList()
-    var channel2Queue: LinkedList<Complex> = LinkedList()
+
 
     // Code to manage Service lifecycle.
     private val mServiceConnection = object : ServiceConnection {
@@ -143,6 +136,7 @@ class DeviceControlActivity : Activity() {
 
             if (mIsDeviceGanglion) {
                 if (SampleGattAttributes.UUID_GANGLION_SEND == characteristic.uuid.toString()) {
+                    val characteristic = mGattCharacteristics!![0][1]
                     //we use this only when the device is a ganglion
                     val c = toggleDataStream(characteristic)
                     Toast.makeText(applicationContext, "Sent: '$c' to Ganglion", Toast.LENGTH_SHORT).show()
@@ -218,14 +212,16 @@ class DeviceControlActivity : Activity() {
         false
     }
 
-    private fun toggleDataStream(BLEGChar: BluetoothGattCharacteristic): Char {
-        if(!isStreaming){
-            isStreaming = true
-            tStart = System.currentTimeMillis()
+    private fun startTraining(){
+        mBluetoothLeService!!.isTraining = true
+        val characteristic = mGattCharacteristics!![0][1]
+        //we use this only when the device is a ganglion
+        val c = toggleDataStream(characteristic)
+        Toast.makeText(applicationContext, "Sent: '$c' to Ganglion", Toast.LENGTH_SHORT).show()
+    }
 
-        }else{
-            isStreaming = false
-        }
+    private fun toggleDataStream(BLEGChar: BluetoothGattCharacteristic): Char {
+
         val cmd = mCommands[mCommandIdx].toChar()
         Log.v(TAG, "Sending Command : " + cmd)
         BLEGChar.value = byteArrayOf(cmd.toByte())
@@ -251,7 +247,8 @@ class DeviceControlActivity : Activity() {
     }
 
     private fun clearUI() {
-        mGattServicesList!!.setAdapter(null as SimpleExpandableListAdapter?)
+        mStartButton!!.isEnabled = false
+        mTrainButton!!.isEnabled = false
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
@@ -281,8 +278,7 @@ class DeviceControlActivity : Activity() {
 
         // Sets up UI references.
         (findViewById<View>(R.id.device_address) as TextView).text = mDeviceAddress
-        mGattServicesList = findViewById<View>(R.id.gatt_services_list) as ExpandableListView
-        mGattServicesList!!.setOnChildClickListener(servicesListClickListner)
+
         mConnectionState = findViewById<View>(R.id.connection_state) as TextView
 
         actionBar!!.title = mDeviceName
@@ -292,20 +288,32 @@ class DeviceControlActivity : Activity() {
         Log.v(TAG, "Creating Service to Handle all further BLE Interactions")
         bindService(gattServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE)
 
-        graph = findViewById<View>(R.id.graph) as GraphView
-        channel1.color = Color.GREEN
-        channel1.thickness = 2
-        channel2.thickness = 2
-        graph!!.addSeries(channel1)
-        graph!!.addSeries(channel2)
-        graph!!.viewport.setMaxY(20.0)
-        graph!!.viewport.setMinY(0.0)
-        graph!!.viewport.setMaxX(60.0)
-        graph!!.viewport.setMinX(0.0)
-        graph!!.viewport.isXAxisBoundsManual = true
-        graph!!.viewport.isYAxisBoundsManual = true
+        mStartButton = findViewById(R.id.button1)
+        mStartButton!!.setOnClickListener {
+            startTraining()
+        }
 
 
+        mStartButton!!.isEnabled = false
+
+        simpleSeekBar = findViewById(R.id.seekbar)
+
+        simpleSeekBar!!.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                println(progress)
+                mBluetoothLeService!!.dataProcessing.sensitivity = progress/100.00
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+
+            }
+        })
 
 
     }
@@ -357,6 +365,10 @@ class DeviceControlActivity : Activity() {
                 mBluetoothLeService!!.disconnect()
                 return true
             }
+            R.id.help -> {
+                val k = Intent(this, HelpActivity::class.java)
+                startActivity(k)
+            }
             android.R.id.home -> {
                 onBackPressed()
                 return true
@@ -369,117 +381,23 @@ class DeviceControlActivity : Activity() {
         runOnUiThread { mConnectionState!!.setText(resourceId) }
     }
 
-    private fun convert19bitToInt32(a: Int, b: Int, c: Int): Int {
-        val threeByteBuffer = intArrayOf(a, b, c)
-        var prefix = 0
-        return if((threeByteBuffer[2] and 0x01) > 0){
-            prefix = 0b1111111111111
-            (prefix shl 19) or (threeByteBuffer[0] shl 16) or (threeByteBuffer[1] shl 8) or threeByteBuffer[2] or 0xFFFFFFFF.toInt().inv()
-        }else {
-            (prefix shl 19) or (threeByteBuffer[0] shl 16) or (threeByteBuffer[1] shl 8) or threeByteBuffer[2]
-        }
-    }
+
 
     private fun displayData(data: String?) {
 
-
-
-        val scaleVolts = 1200 / (8388607.0 * 1.5 * 51.0)
-        if (data != null) {
-            val bufferStrings = data.split(" ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
-            val buffer = bufferStrings.map { it.toInt() }.toIntArray()
-
-            val receivedDeltas = Array(2) { DoubleArray(4) }
-            if(100 < (buffer[0] and 0xFF) && (buffer[0] and 0xFF) < 201){
-                receivedDeltas[0][0] = convert19bitToInt32((buffer[1] shr 5),
-                        (((buffer[1] and 0x1F) shl 3) and 0xFF) or (buffer[2] shr 5),
-                        (((buffer[2] and 0x1F) shl 3) and 0xFF) or (buffer[3] shr 5)) * scaleVolts
-
-                receivedDeltas[0][1] = convert19bitToInt32((buffer[3] and 0x1F) shr 2,
-                        (buffer[3] shl 6 and 0xFF) or (buffer[4] shr 2),
-                        (buffer[4] shl 6 and 0xFF) or (buffer[5] shr 2)) * scaleVolts
-
-                receivedDeltas[0][2] = convert19bitToInt32( ((buffer[5] and 0x03) shl 1 and 0xFF) or (buffer[6] shr 7),
-                        ((buffer[6] and 0x7F) shl 1 and 0xFF) or (buffer[7] shr 7),
-                        ((buffer[7] and 0x7F) shl 1 and 0xFF) or (buffer[8] shr 7)) * scaleVolts
-
-                receivedDeltas[0][3] = convert19bitToInt32(((buffer[8] and 0x7F) shr 4),
-                        ((buffer[8] and 0x0F) shl 4 and 0xFF) or (buffer[9] shr 4),
-                        ((buffer[9] and 0x0F) shl 4 and 0xFF) or (buffer[10] shr 4)) * scaleVolts
-
-                receivedDeltas[1][0] = convert19bitToInt32(((buffer[10] and 0x0F) shr 1),
-                        (buffer[10] shl 7 and 0xFF) or (buffer[11] shr 1),
-                        (buffer[11] shl 7 and 0xFF) or (buffer[12] shr 1)) * scaleVolts
-
-                receivedDeltas[1][1] = convert19bitToInt32(((buffer[12] and 0x01) shl 2 and 0xFF) or (buffer[13] shr 6),
-                        (buffer[13] shl 2 and 0xFF) or (buffer[14] shr 6),
-                        (buffer[14] shl 2 and 0xFF) or (buffer[15] shr 6)) * scaleVolts
-
-                receivedDeltas[1][2] = convert19bitToInt32(((buffer[15] and 0x38) shr 3),
-                        ((buffer[15] and 0x07) shl 5 and 0xFF) or ((buffer[16] and 0xF8) shr 3),
-                        ((buffer[16] and 0x07) shl 5 and 0xFF) or ((buffer[17] and 0xF8) shr 3)) * scaleVolts
-
-                receivedDeltas[1][3] = convert19bitToInt32((buffer[17] and 0x07), buffer[18], buffer[19]) * scaleVolts
-
-
-                channel1Queue.addFirst(Complex(receivedDeltas[0][0], 0.0))
-                channel1Queue.addFirst(Complex(receivedDeltas[1][0], 0.0))
-
-                channel2Queue.addFirst(Complex(receivedDeltas[0][1], 0.0))
-                channel2Queue.addFirst(Complex(receivedDeltas[1][1], 0.0))
-
-                if (channel1Queue.size > 256){
-                    if (channel1Queue.size > 256){
-                        channel1Queue.removeLast()
-                        channel2Queue.removeLast()
-                    }
-                    channel1Queue.removeLast()
-                    val channel1FFT = arrayOfNulls<Complex>(256)
-                    for (i in 0..255){
-                        channel1FFT[i] = channel1Queue[i]
-                    }
-                    FastFourierTransform.fft(channel1FFT)
-                    val channel1DataPoints = arrayOfNulls<DataPoint>(256)
-                    for (i in 0..255){
-
-                        channel1DataPoints[i] = DataPoint(i.toDouble(), channel1FFT[i]!!.re)
-                    }
-
-                    channel1.resetData(channel1DataPoints)
-
-
-
-
-                    channel2Queue.removeLast()
-                    val channel2FFT = arrayOfNulls<Complex>(256)
-                    for (i in 0..255){
-                        channel2FFT[i] = channel2Queue[i]
-                    }
-                    FastFourierTransform.fft(channel2FFT)
-                    val channel2DataPoints = arrayOfNulls<DataPoint>(256)
-                    for (i in 0..255){
-
-                        channel2DataPoints[i] = DataPoint(i.toDouble(), channel2FFT[i]!!.re)
-                    }
-                    channel2.resetData(channel2DataPoints)
-
-
-
+        /*if (data != null){
+            if (pastData !=data){
+                if((data.toDouble() > -1.75) && (data.toDouble() < .25)){
+                    println("not sleepy")
+                }else{
+                    println("sleepy")
                 }
-
-
-
-
+                pastData = data
             }
 
-
-
-
-
-
-
-        }
+        }*/
     }
+
 
     // Demonstrates how to iterate through the supported GATT Services/Characteristics.
     // In this sample, we populate the data structure that is bound to the ExpandableListView
@@ -518,45 +436,39 @@ class DeviceControlActivity : Activity() {
 
             // Loops through available Characteristics.
             for (gattCharacteristic in gattCharacteristics) {
-                charas.add(gattCharacteristic)
-                val currentCharaData = HashMap<String, String>()
                 uuid = gattCharacteristic.uuid.toString()
-                currentCharaData.put(
-                        LIST_NAME, SampleGattAttributes.lookup(uuid, unknownCharaString))
-                currentCharaData.put(LIST_UUID, uuid)
-                gattCharacteristicGroupData.add(currentCharaData)
 
-                //if this is the read attribute for Cyton/Ganglion, register for notify service
-                if (SampleGattAttributes.UUID_GANGLION_RECEIVE == uuid || SampleGattAttributes.UUID_CYTON_RECEIVE == uuid) {//the RECEIVE characteristic
-                    Log.v(TAG, "Registering notify for: " + uuid)
-                    //we set it to notify, if it isn't already on notify
-                    if (mNotifyOnRead == null) {
-                        mBluetoothLeService!!.setCharacteristicNotification(gattCharacteristic, true)
-                        mNotifyOnRead = gattCharacteristic
-                    } else {
-                        Log.v(TAG, "De-registering Notification for: " + mNotifyOnRead!!.uuid.toString() + " first")
-                        mBluetoothLeService!!.setCharacteristicNotification(mNotifyOnRead!!, false)
-                        mBluetoothLeService!!.setCharacteristicNotification(gattCharacteristic, true)
-                        mNotifyOnRead = gattCharacteristic
+                    charas.add(gattCharacteristic)
+                    val currentCharaData = HashMap<String, String>()
+
+                    currentCharaData.put(
+                            LIST_NAME, SampleGattAttributes.lookup(uuid, unknownCharaString))
+                    currentCharaData.put(LIST_UUID, uuid)
+                    gattCharacteristicGroupData.add(currentCharaData)
+
+                    //if this is the read attribute for Cyton/Ganglion, register for notify service
+                    if (SampleGattAttributes.UUID_GANGLION_RECEIVE == uuid || SampleGattAttributes.UUID_CYTON_RECEIVE == uuid) {//the RECEIVE characteristic
+                        Log.v(TAG, "Registering notify for: " + uuid)
+                        //we set it to notify, if it isn't already on notify
+                        if (mNotifyOnRead == null) {
+                            mBluetoothLeService!!.setCharacteristicNotification(gattCharacteristic, true)
+                            mNotifyOnRead = gattCharacteristic
+                        } else {
+                            Log.v(TAG, "De-registering Notification for: " + mNotifyOnRead!!.uuid.toString() + " first")
+                            mBluetoothLeService!!.setCharacteristicNotification(mNotifyOnRead!!, false)
+                            mBluetoothLeService!!.setCharacteristicNotification(gattCharacteristic, true)
+                            mNotifyOnRead = gattCharacteristic
+                        }
                     }
-                }
+
             }
             mGattCharacteristics!!.add(charas)
             gattCharacteristicData.add(gattCharacteristicGroupData)
+
+            mStartButton!!.isEnabled = true
         }
 
-        val gattServiceAdapter = SimpleExpandableListAdapter(
-                this,
-                gattServiceData,
-                android.R.layout.simple_expandable_list_item_2,
-                arrayOf(LIST_NAME, LIST_UUID),
-                intArrayOf(android.R.id.text1, android.R.id.text2),
-                gattCharacteristicData,
-                android.R.layout.simple_expandable_list_item_2,
-                arrayOf(LIST_NAME, LIST_UUID),
-                intArrayOf(android.R.id.text1, android.R.id.text2)
-        )
-        mGattServicesList!!.setAdapter(gattServiceAdapter)
+
     }
 
     companion object {

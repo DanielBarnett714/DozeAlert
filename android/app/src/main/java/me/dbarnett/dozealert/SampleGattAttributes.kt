@@ -64,9 +64,10 @@ object SampleGattAttributes {
 
     init {
         // Sample Services.
-        attributes.put(UUID_GANGLION_SERVICE, "Ganglion Service (via SIMBLEE)")
+        attributes.put(UUID_GANGLION_SERVICE, "Device is Connected")
         attributes.put(UUID_GANGLION_RECEIVE, "Ganglion Receive")
         attributes.put(UUID_GANGLION_SEND, "Ganglion Send")
+        attributes.put(UUID_GANGLION_SEND, "Ganglion Train")
         attributes.put(UUID_GANGLION_DISCONNECT, "Ganglion Disconnect")
 
         attributes.put(UUID_CYTON_SERVICE, "Cyton Service (via RFDuino)")

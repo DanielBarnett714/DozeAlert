@@ -14,16 +14,24 @@
      limitations under the License.
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_refresh"
-          android:checkable="false"
-          android:orderInCategory="1"
-          android:showAsAction="ifRoom"/>
+
     <item android:id="@+id/menu_connect"
           android:title="@string/menu_connect"
-          android:orderInCategory="100"
-          android:showAsAction="ifRoom|withText"/>
+          android:orderInCategory="100"/>
     <item android:id="@+id/menu_disconnect"
           android:title="@string/menu_disconnect"
-          android:orderInCategory="101"
-          android:showAsAction="ifRoom|withText"/>
+          android:orderInCategory="101" />
+
+    <item
+        android:id="@+id/history"
+        android:title="@string/history"
+        android:visible="true" />
+    <item
+        android:id="@+id/help"
+        android:title="@string/help"
+        android:visible="true" />
+    <item
+        android:id="@+id/settings"
+        android:title="@string/settings"
+        android:visible="true"/>
 </menu>
