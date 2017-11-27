@@ -6,8 +6,8 @@ package me.dbarnett.dozealert.dt.core;
  */
 public class YesNoDomain extends Domain {
 	
-	public static final String NO = "No";
-	public static final String YES = "Yes";
+	public static final String NO = "false";
+	public static final String YES = "true";
 	
 	public YesNoDomain() {
 		super(NO, YES);

@@ -46,6 +46,7 @@ public class DecisionTree {
 	
 	protected void dump(int depth) {
 		indent(depth);
+		System.out.println(depth);
 		if (variable != null) {
 			System.out.println(variable);
 			for (int i=0; i < variable.domain.size(); i++) {
@@ -109,6 +110,7 @@ public class DecisionTree {
 	}
 
 	public double validate(Set<Example> examples) {
+		System.out.println("validating");
 		int ntested = 0;
 		int ncorrect = 0;
 		for (Example e : examples) {

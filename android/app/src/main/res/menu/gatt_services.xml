@@ -23,15 +23,21 @@
           android:orderInCategory="101" />
 
     <item
-        android:id="@+id/history"
-        android:title="@string/history"
-        android:visible="true" />
-    <item
         android:id="@+id/help"
         android:title="@string/help"
         android:visible="true" />
+
     <item
-        android:id="@+id/settings"
-        android:title="@string/settings"
+        android:id="@+id/trainOpen"
+        android:title="Train Awake"
+        android:visible="true"/>
+    <item
+        android:id="@+id/trainClose"
+        android:title="Train Drowsy"
+        android:visible="true"/>
+
+    <item
+        android:id="@+id/clearTraining"
+        android:title="Clear Training"
         android:visible="true"/>
 </menu>

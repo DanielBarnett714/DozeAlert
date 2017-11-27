@@ -41,9 +41,7 @@ import android.widget.*
 import java.util.*
 import android.widget.SeekBar
 import android.widget.Toast
-
-
-
+import java.io.File
 
 
 /**
@@ -53,13 +51,9 @@ import android.widget.Toast
  * Bluetooth LE API.
  */
 class DeviceControlActivity : Activity() {
-    private var mConnectionState: TextView? = null
-    private var mLoadingText: TextView? = null
     private var mStartButton: Button? = null
-    private var mTrainButton: Button? = null
     private var mDeviceName: String? = null
     private var mDeviceAddress: String? = null
-    private var mGattServicesList: ExpandableListView? = null
     private var mBluetoothLeService: BluetoothLeService? = null
     private var mGattCharacteristics: ArrayList<ArrayList<BluetoothGattCharacteristic>>? = ArrayList()
     private var mConnected = false
@@ -67,10 +61,10 @@ class DeviceControlActivity : Activity() {
 
     private var mIsDeviceGanglion: Boolean = false
     private var mIsDeviceCyton: Boolean = false
-    var pastData = ""
     var simpleSeekBar: SeekBar? = null
     private val LIST_NAME = "NAME"
     private val LIST_UUID = "UUID"
+    var isStreaming = false
 
 
     // Code to manage Service lifecycle.
@@ -106,12 +100,10 @@ class DeviceControlActivity : Activity() {
             if (BluetoothLeService.ACTION_GATT_CONNECTED == action) {
                 Log.v(TAG, "GattServer Connected")
                 mConnected = true
-                updateConnectionState(R.string.connected)
                 invalidateOptionsMenu()
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED == action) {
                 Log.v(TAG, "GattServer Disconnected")
                 mConnected = false
-                updateConnectionState(R.string.disconnected)
                 invalidateOptionsMenu()
                 clearUI()
             } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED == action) {
@@ -119,109 +111,18 @@ class DeviceControlActivity : Activity() {
                 // Show all the supported services and characteristics on the user interface.
                 displayGattServices(mBluetoothLeService!!.supportedGattServices)
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE == action) {
-                displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA))
             }
         }
     }
 
-    // If a given GATT characteristic is selected, check for supported features.  This sample
-    // demonstrates 'Read' and 'Notify' features.  See
-    // http://d.android.com/reference/android/bluetooth/BluetoothGatt.html for the complete
-    // list of supported characteristic features.
-    private val servicesListClickListner = ExpandableListView.OnChildClickListener { parent, v, groupPosition, childPosition, id ->
-        if (mGattCharacteristics != null) {
-            //if it is a characteristic related view item, get the characteristic
-            val characteristic = mGattCharacteristics!![groupPosition][childPosition]
-            val charaProp = characteristic.properties
-
-            if (mIsDeviceGanglion) {
-                if (SampleGattAttributes.UUID_GANGLION_SEND == characteristic.uuid.toString()) {
-                    val characteristic = mGattCharacteristics!![0][1]
-                    //we use this only when the device is a ganglion
-                    val c = toggleDataStream(characteristic)
-                    Toast.makeText(applicationContext, "Sent: '$c' to Ganglion", Toast.LENGTH_SHORT).show()
-                }
-
-                if (SampleGattAttributes.UUID_GANGLION_RECEIVE == characteristic.uuid.toString()) {
-                    //check if we have registered for notifications
-                    val updateNotifyOnRead = setCharacteristicNotification(mNotifyOnRead, characteristic, "Ganglion RECEIVE")
-                    if (updateNotifyOnRead) mNotifyOnRead = characteristic
-
-                    //also read it for just now
-                    mBluetoothLeService!!.readCharacteristic(characteristic)
-                }
-
-                if (SampleGattAttributes.UUID_GANGLION_DISCONNECT == characteristic.uuid.toString()) {
-                    Log.v(TAG, "Not sure what the disconnect characteristic does")
-                    Toast.makeText(applicationContext, "Disconnect Not Actionable", Toast.LENGTH_SHORT).show()
-                }
-                return@OnChildClickListener true//all done, return
-            }
-
-            if (mIsDeviceCyton) {
-                if (SampleGattAttributes.UUID_CYTON_SEND == characteristic.uuid.toString()) {
-                    //we use this only when the device is a ganglion
-                    val c = toggleDataStream(characteristic)
-                    Toast.makeText(applicationContext, "Sent: '$c' to Cyton", Toast.LENGTH_SHORT).show()
-                }
-
-                if (SampleGattAttributes.UUID_CYTON_RECEIVE == characteristic.uuid.toString()) {
-                    //check if we have registered for notifications
-                    val updateNotifyOnRead = setCharacteristicNotification(mNotifyOnRead, characteristic, "Cyton RECEIVE")
-                    if (updateNotifyOnRead) mNotifyOnRead = characteristic
-
-                    //also read it for just now
-                    mBluetoothLeService!!.readCharacteristic(characteristic)
-                }
-
-                if (SampleGattAttributes.UUID_CYTON_DISCONNECT == characteristic.uuid.toString()) {
-                    Log.v(TAG, "Not sure what the disconnect characteristic does")
-                    Toast.makeText(applicationContext, "Disconnect Not Actionable", Toast.LENGTH_SHORT).show()
-                }
-                return@OnChildClickListener true//all done, return
-            }
-
-
-            //If here, this is either not a Cyton/Ganglion board OR not the 3 primary characteristics
-
-            //specific readable characteristics
-
-            //sample test using battery level service (PlayStore:BLE Peripheral Simulator) BATTERY_LEVEL characteristic notifies
-            if (SampleGattAttributes.UUID_BATTERY_LEVEL == characteristic.uuid.toString()) {//the
-                //we set it to notify, if it isn't already on notify
-                Log.v(TAG, "Battery level notification registration")
-                val updateNotifyOnRead = setCharacteristicNotification(mNotifyOnRead, characteristic, "Battery Level")
-                if (updateNotifyOnRead) mNotifyOnRead = characteristic
-                mBluetoothLeService!!.readCharacteristic(characteristic)
-                return@OnChildClickListener true//all done, return
-            }
-
-            if (charaProp or BluetoothGattCharacteristic.PROPERTY_READ > 0) {
-                //read it immediately
-                Log.v(TAG, "Reading characteristic: " + characteristic.uuid.toString())
-                mBluetoothLeService!!.readCharacteristic(characteristic)
-            }
-
-            if (charaProp or BluetoothGattCharacteristic.PROPERTY_NOTIFY > 0) {
-                val updateNotifyOnRead = setCharacteristicNotification(mNotifyOnRead, characteristic, SampleGattAttributes.getShortUUID(characteristic.uuid))
-                if (updateNotifyOnRead) mNotifyOnRead = characteristic
-                mBluetoothLeService!!.readCharacteristic(characteristic)
-            }
-            return@OnChildClickListener true
-        }
-        false
-    }
-
-    private fun startTraining(){
-        mBluetoothLeService!!.isTraining = true
+    private fun toggleTraining(){
         val characteristic = mGattCharacteristics!![0][1]
         //we use this only when the device is a ganglion
-        val c = toggleDataStream(characteristic)
-        Toast.makeText(applicationContext, "Sent: '$c' to Ganglion", Toast.LENGTH_SHORT).show()
+        toggleDataStream(characteristic)
+
     }
 
     private fun toggleDataStream(BLEGChar: BluetoothGattCharacteristic): Char {
-
         val cmd = mCommands[mCommandIdx].toChar()
         Log.v(TAG, "Sending Command : " + cmd)
         BLEGChar.value = byteArrayOf(cmd.toByte())
@@ -230,25 +131,9 @@ class DeviceControlActivity : Activity() {
         return cmd
     }
 
-    private fun setCharacteristicNotification(currentNotify: BluetoothGattCharacteristic?, newNotify: BluetoothGattCharacteristic, toastMsg: String): Boolean {
-        if (currentNotify == null) {//none registered previously
-            mBluetoothLeService!!.setCharacteristicNotification(newNotify, true)
-        } else {//something was registered previously
-            if (currentNotify.uuid != newNotify.uuid) {//we are subscribed to another characteristic?
-                mBluetoothLeService!!.setCharacteristicNotification(currentNotify, false)//unsubscribe
-                mBluetoothLeService!!.setCharacteristicNotification(newNotify, true) //subscribe to Receive
-            } else {
-                //no change required
-                return false
-            }
-        }
-        Toast.makeText(applicationContext, "Notify: " + toastMsg, Toast.LENGTH_SHORT).show()
-        return true//indicates reassignment needed for mNotifyOnRead
-    }
 
     private fun clearUI() {
         mStartButton!!.isEnabled = false
-        mTrainButton!!.isEnabled = false
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
@@ -277,11 +162,9 @@ class DeviceControlActivity : Activity() {
         }
 
         // Sets up UI references.
-        (findViewById<View>(R.id.device_address) as TextView).text = mDeviceAddress
 
-        mConnectionState = findViewById<View>(R.id.connection_state) as TextView
 
-        actionBar!!.title = mDeviceName
+        actionBar!!.title = "Connecting"
         actionBar!!.setDisplayHomeAsUpEnabled(true)
         val gattServiceIntent = Intent(this, BluetoothLeService::class.java)
 
@@ -290,7 +173,16 @@ class DeviceControlActivity : Activity() {
 
         mStartButton = findViewById(R.id.button1)
         mStartButton!!.setOnClickListener {
-            startTraining()
+            mBluetoothLeService!!.dataProcessing!!.buildTester()
+            toggleTraining()
+
+            if (!isStreaming){
+                mStartButton!!.setText("Stop")
+                isStreaming = true
+            }else{
+                mStartButton!!.setText("Start")
+                isStreaming = false
+            }
         }
 
 
@@ -314,6 +206,7 @@ class DeviceControlActivity : Activity() {
 
             }
         })
+
 
 
     }
@@ -359,15 +252,55 @@ class DeviceControlActivity : Activity() {
                 Log.v(TAG, "Trying to connect to: $mDeviceName Address: $mDeviceAddress on click")
                 mBluetoothLeService!!.connect(mDeviceAddress)
                 //the completion of the connection is returned separately
+                actionBar!!.title = "Connecting"
                 return true
             }
             R.id.menu_disconnect -> {
                 mBluetoothLeService!!.disconnect()
+                actionBar!!.title = "Disconnected"
+
                 return true
             }
             R.id.help -> {
                 val k = Intent(this, HelpActivity::class.java)
                 startActivity(k)
+            }
+            R.id.trainOpen -> {
+                mStartButton!!.isEnabled = false
+                mBluetoothLeService!!.isTraining = true
+                mBluetoothLeService!!.eyesOpen = false
+                toggleTraining()
+                java.util.Timer().schedule(
+                        object : java.util.TimerTask() {
+                            override fun run() {
+                                mBluetoothLeService!!.isTraining = false
+                                mBluetoothLeService!!.eyesOpen = false
+                                toggleTraining()
+                                mBluetoothLeService!!.dataProcessing.buildTester()
+                            }
+                        }, 20000)
+            }
+            R.id.trainClose -> {
+                mStartButton!!.isEnabled = false
+                mBluetoothLeService!!.isTraining = true
+                mBluetoothLeService!!.eyesOpen = true
+                toggleTraining()
+                java.util.Timer().schedule(
+                        object : java.util.TimerTask() {
+                            override fun run() {
+                                mBluetoothLeService!!.isTraining = false
+                                mBluetoothLeService!!.eyesOpen = false
+                                toggleTraining()
+                                mBluetoothLeService!!.dataProcessing.buildTester()
+                            }
+                        }, 20000)
+            }
+            R.id.clearTraining -> {
+                var file = File(applicationContext.filesDir.path.toString() + "braindata.csv")
+                if (file.exists()) {
+                    file.delete()
+                }
+                return true
             }
             android.R.id.home -> {
                 onBackPressed()
@@ -377,26 +310,6 @@ class DeviceControlActivity : Activity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun updateConnectionState(resourceId: Int) {
-        runOnUiThread { mConnectionState!!.setText(resourceId) }
-    }
-
-
-
-    private fun displayData(data: String?) {
-
-        /*if (data != null){
-            if (pastData !=data){
-                if((data.toDouble() > -1.75) && (data.toDouble() < .25)){
-                    println("not sleepy")
-                }else{
-                    println("sleepy")
-                }
-                pastData = data
-            }
-
-        }*/
-    }
 
 
     // Demonstrates how to iterate through the supported GATT Services/Characteristics.
@@ -466,6 +379,7 @@ class DeviceControlActivity : Activity() {
             gattCharacteristicData.add(gattCharacteristicGroupData)
 
             mStartButton!!.isEnabled = true
+            actionBar!!.title = "Connected"
         }
 
 

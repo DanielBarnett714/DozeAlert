@@ -33,7 +33,12 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
+import me.dbarnett.dozealert.dt.core.DecisionTreeLearner
+import me.dbarnett.dozealert.dt.core.Example
+import me.dbarnett.dozealert.dt.util.ArraySet
 import unsigned.toUInt
+import java.io.File
+import java.io.IOException
 
 import java.util.Arrays
 import java.util.UUID
@@ -49,6 +54,7 @@ class BluetoothLeService : Service() {
     private var mBluetoothDeviceAddress: String? = null
     private var mBluetoothGatt: BluetoothGatt? = null
     var isTraining = false
+    var eyesOpen = false
     private var mConnectionState = STATE_DISCONNECTED
     var dataProcessing: DataProcessing = DataProcessing(this)
 
@@ -132,7 +138,7 @@ class BluetoothLeService : Service() {
 
 
 
-                val drowsinessValue: String = dataProcessing.processData(dataBuffer, isTraining).toString()
+                val drowsinessValue: String = dataProcessing.processData(dataBuffer, isTraining, eyesOpen).toString()
                 intent.putExtra(EXTRA_DATA, drowsinessValue)
             }
 
@@ -301,6 +307,8 @@ class BluetoothLeService : Service() {
             mBluetoothGatt!!.writeDescriptor(descriptor)
         }
     }
+
+
 
     companion object {
         private val TAG = "dozealert/" + BluetoothLeService::class.java.simpleName
