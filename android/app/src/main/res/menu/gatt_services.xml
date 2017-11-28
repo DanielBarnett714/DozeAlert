@@ -40,4 +40,9 @@
         android:id="@+id/clearTraining"
         android:title="Clear Training"
         android:visible="true"/>
+
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"
+        android:visible="true"/>
 </menu>

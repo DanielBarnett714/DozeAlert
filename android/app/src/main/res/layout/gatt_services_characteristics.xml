@@ -52,8 +52,8 @@
         android:text="Sensitivity" />
     <SeekBar
         android:id="@+id/seekbar"
-        android:max="10"
-        android:progress="5"
+        android:max="200"
+        android:progress="100"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

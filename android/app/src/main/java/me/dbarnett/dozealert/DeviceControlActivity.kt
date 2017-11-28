@@ -266,7 +266,6 @@ class DeviceControlActivity : Activity() {
                 startActivity(k)
             }
             R.id.trainOpen -> {
-                mStartButton!!.isEnabled = false
                 mBluetoothLeService!!.isTraining = true
                 mBluetoothLeService!!.eyesOpen = false
                 toggleTraining()
@@ -281,7 +280,6 @@ class DeviceControlActivity : Activity() {
                         }, 20000)
             }
             R.id.trainClose -> {
-                mStartButton!!.isEnabled = false
                 mBluetoothLeService!!.isTraining = true
                 mBluetoothLeService!!.eyesOpen = true
                 toggleTraining()
@@ -300,6 +298,11 @@ class DeviceControlActivity : Activity() {
                 if (file.exists()) {
                     file.delete()
                 }
+                return true
+            }
+            R.id.settings -> {
+                val k = Intent(this, SettingsActivity::class.java)
+                startActivity(k)
                 return true
             }
             android.R.id.home -> {

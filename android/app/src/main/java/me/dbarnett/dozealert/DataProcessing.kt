@@ -1,6 +1,7 @@
 package me.dbarnett.dozealert
 
 import android.content.Context
+import android.content.Context.VIBRATOR_SERVICE
 import com.jjoe64.graphview.series.DataPoint
 import java.io.File
 import java.io.FileWriter
@@ -14,6 +15,9 @@ import me.dbarnett.dozealert.dt.core.DecisionTreeLearner
 import me.dbarnett.dozealert.dt.core.Example
 import me.dbarnett.dozealert.dt.util.ArraySet
 import java.io.IOException
+import android.preference.PreferenceManager
+import android.content.SharedPreferences
+import android.os.Vibrator
 
 
 /**
@@ -23,6 +27,7 @@ class DataProcessing(val context: Context) {
 
     private val scaleVolts = 1200.0 / (8388607.0 * 1.5 * 51.0)
     var sensitivity = 1.00
+    var alarmLength = 0
     var learner: DecisionTreeLearner? = null
     var tree: DecisionTree? = null
     val problem = DrowsinessTester()
@@ -34,6 +39,8 @@ class DataProcessing(val context: Context) {
     var shouldUpdate = 0
     var sleepyCount = 0
     val toneG = ToneGenerator(AudioManager.STREAM_ALARM, 100)
+    var v: Vibrator? = null
+    var prefs: SharedPreferences? = null
 
 
 
@@ -133,7 +140,8 @@ class DataProcessing(val context: Context) {
                 }
 
                 shouldUpdate += 1
-                if (shouldUpdate > 10) {
+                if (shouldUpdate > 3) {
+                    shouldUpdate = 0
 
                     val channel1FFTReal = DoubleArray(256)
                     val channel1FFTImag = DoubleArray(256)
@@ -166,7 +174,7 @@ class DataProcessing(val context: Context) {
                         channel2SmoothMag[i] = (channel2FFTMag[i] + channel2FFTPrevMag[i])/2
                         channel1FFTPrevMag[i] = channel1SmoothMag[i]
                         channel2FFTPrevMag[i] = channel2SmoothMag[i]
-                        channelAverage[i] = (channel1SmoothMag[i] + channel2SmoothMag[i])/2
+                        channelAverage[i] = (channel1FFTMag[i] + channel2FFTMag[i])/2
                     }
                     var alpha = 0.0
                     var beta = 0.0
@@ -216,6 +224,10 @@ class DataProcessing(val context: Context) {
                     theta /= thetaNum
                     gamma /= gammaNum
 
+
+                    var ratio = (alpha + theta)/beta
+
+                    println(ratio)
 
                     var alphaInput = ""
                     var betaInput = ""
@@ -342,21 +354,29 @@ class DataProcessing(val context: Context) {
                         example.setInputValue(problem.inputs[2], deltaInput)
                         example.setInputValue(problem.inputs[3], thetaInput)
                         //example.outputValue = eyesOpen.toString()
-                        if(tree != null) {
-                            val result = tree!!.eval(example)
-                            println(result)
+                        if(true) {
 
-                            if(result.equals("false")){
+
+                            if(ratio < 1.15 && ratio > .8 ){
                                 sleepyCount += 1
 
-                                if (sleepyCount >= sensitivity && sleepyCount >= 2){
-                                    toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 100)
+                                if (sleepyCount >= 20){
+                                    if(alarmLength > 0) {
+                                        if (prefs!!.getBoolean("alarm_switch", true)) {
+                                            toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, alarmLength)
+                                        }
+                                        if (prefs!!.getBoolean("vibration_switch", true)) {
+                                            v!!.vibrate(alarmLength.toLong())
+                                        }
+                                    }
+                                    alarmLength += 25
 
-                                    sleepyCount = 1
+                                    sleepyCount = 15
                                 }
 
                             }else{
                                 //println("Not Sleepy")
+                                alarmLength = 0
                                 sleepyCount = 0
                             }
                         }
@@ -372,7 +392,8 @@ class DataProcessing(val context: Context) {
 
     @Throws(IOException::class)
     fun buildTester() {
-
+        v = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        prefs = PreferenceManager.getDefaultSharedPreferences(context)
         problem.dump()
         var file = File(context.filesDir.path.toString(), "braindata.csv")
         if (!file.exists()) {
