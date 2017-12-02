@@ -9,7 +9,8 @@ permalink: /deliverables/
 
 
 <div class="container">
-## Basic Sketch
+
+<h2> Basic Sketch </h2>
 
 <div class="center">
 	<img src="../images/prototyping/basic_sketch.JPG" alt="notebook sketch" id="notebook-sketch">
@@ -23,7 +24,7 @@ permalink: /deliverables/
 
 <hr>
 
-## Paper Prototype
+<h2> Paper Prototype </h2>
           
 <div class="slider">                  
 	<div>
@@ -59,11 +60,13 @@ permalink: /deliverables/
 </div>
 
 <h3>Key takeaways from testing:</h3>
-1. Users found that our design was very simple and intuitive to use, especially because of the two simple buttons.
-2. Users reported that phone vibration got their attention the easiest.
-3. Overall, users liked the application, with the majority giving it a rating of 4 or higher on a 5-point scale.
-4. Initially, some users reported that they did not know how to go back to the home screen. We iterated by replacing the profile menu with a hamburger menu. We made the hamburger menu more apparent, and subsequent testers did not have the same issue.
-5. Users liked the idea of having a sound alarm telling them that they are drowsy.  
+<ol>
+	<li>Users found that our design was very simple and intuitive to use, especially because of the two simple buttons.</li>
+	<li>Users reported that phone vibration got their attention the easiest.</li>
+	<li>Overall, users liked the application, with the majority giving it a rating of 4 or higher on a 5-point scale.</li>
+	<li>Initially, some users reported that they did not know how to go back to the home screen. We iterated by replacing the profile menu with a hamburger menu. We made the hamburger menu more apparent, and subsequent testers did not have the same issue.</li>
+	<li>Users liked the idea of having a sound alarm telling them that they are drowsy.</li>
+</ol>
 <br><br>
 
 <a href="https://drive.google.com/file/d/1OSQ1SdMF6oObkApD-TcTJ2zRFK4-cG2N/view?usp=sharing" id="download-button" class="btn-large waves-effect waves-light green" target="_blank">Evaluation on paper prototype</a>
@@ -71,14 +74,14 @@ permalink: /deliverables/
 <br>  
 <hr>
 
-## Low-fidelity Midsemester Presentation
+<h2>Low-fidelity Midsemester Presentation</h2>
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQPAa4nokXTPQFfT-eCQYIllq-jCyIo4Gjop-pcxorzm_HY1DUA5_EOpiNwAItIKtI9EcEeGpqOnU5K/embed?start=false&loop=false&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 <br>
 <hr>
 
-## WireFrame
+<h2>WireFrame</h2>
 
 <div class="slider">                  
 	<div>
@@ -111,15 +114,17 @@ permalink: /deliverables/
 </div>
 
 <h3>Key takeaways from testing:</h3>
-1. The design is very simple and straightforward - “When I go to the homepage, it’s very clear what I should do”
-2. Improvement Opportunity: Design could be more aesthetically pleasing. It would be cleaner to have just one button to record and stop.
-3. Improvement Opportunity: Black on gray for the buttons makes it difficult to see.
-4. Improvement Opportunity: Users found the "History" page to be unnecessary. When users imagine themselves using the application, they do not want to be in their cars fumbling through their phone. They would rather open the application and drive away.
+<ol>
+	<li>The design is very simple and straightforward - “When I go to the homepage, it’s very clear what I should do”</li>
+	<li>Improvement Opportunity: Design could be more aesthetically pleasing. It would be cleaner to have just one button to record and stop.</li>
+	<li>Improvement Opportunity: Black on gray for the buttons makes it difficult to see.</li>
+	<li>Improvement Opportunity: Users found the "History" page to be unnecessary. When users imagine themselves using the application, they do not want to be in their cars fumbling through their phone. They would rather open the application and drive away.</li>
+</ol>
 
 <br>
 <hr>
 
-## Final Android Application
+<h2>Final Android Application</h2>
 
 <div class="slider">     
 	<div>             
@@ -142,7 +147,7 @@ permalink: /deliverables/
 <br>
 <hr>
 
-## Headset
+<h2>Headset</h2>
 
 <p>We chose to leverage OpenBCI (Open Source Brain-Computer Interface) to help us obtain our project objective. OpenBCI provides the necessary tools to sample the electrical activity of a person's body. With the design provided by OpenBCI, we 3D printed the headset to save on cost. The following pictures show the evolution of the headset being built:</p>
 
@@ -161,11 +166,11 @@ permalink: /deliverables/
 <br>
 <hr>
 
-## Final Video
+<h2>Final Video</h2>
 
 <iframe src="https://drive.google.com/file/d/1AJApwqWwFDb3OA7MgB8jHHpsg6hkpSF6/preview" width="640" height="480"></iframe>
 
-## Final Presentation
+<h2>Final Presentation</h2>
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQYSzdlMPEC77nZFIb8SMjq3KwlmBaArLFonzRX37PVYiqEuxx_V3vmwKA3J1g-mTP7KQAimfAglwFb/embed?start=false&loop=true&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
