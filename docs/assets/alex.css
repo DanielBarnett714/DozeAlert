@@ -26,6 +26,67 @@ footer {
 	margin: auto;
 }
 
+.presentation-button {
+	display: none;
+}
+
 #notebook-sketch {
 	width: 500px;
 }
+
+/*	****************************************
+	Long-scrolly sections
+	**************************************** */
+.section {
+    min-height: 100%; /* required - makes the sections act like pages */
+    padding-top: 75px; /* how tall is the persistent nav bar at the top? */
+    padding-bottom: 25px; /* typical - keep content away from the next section */
+}
+
+.column1, .column2 {
+	display: table-cell;
+	width: 50%;
+	padding-left: 20px;
+	padding-right: 20px;
+	vertical-align: top;
+}
+
+/*Mobile Responsive Media tags*/
+@media (max-width: 960px) {
+	.presentation{
+		display: none;
+	}
+	.presentation-button{
+		display: block;
+	}
+}
+@media (max-width: 720px) {
+	.column1, .column2 {
+		display: block;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+
+@media (max-width: 520px) {
+	.presentation {
+		/*display: none;*/
+	}
+	.column1, .column2 {
+		display: block;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+
+@media (max-width: 390px) {
+	.column1, .column2 {
+		display: block;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+
+
+
+
