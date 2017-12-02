@@ -105,3 +105,6 @@ For more information on the evaluation of the paper prototype, please visit [thi
 		<img src="../images/wireframe/what-bci.png" title="What is OpenBCI? pressed. Launches a web page." alt="What is OpenBCI? pressed" max-height="400px">         
 	</div>    
 </div>
+
+<h3>Key takeaways from testing:</h3>
+1. 
