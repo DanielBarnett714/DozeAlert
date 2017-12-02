@@ -7,10 +7,12 @@ permalink: /deliverables/
 
 <h1 class="page-title">{{ page.title | escape }}</h1>
 
+
+<div class="container">
 ## Basic Sketch
 
 <div class="center">
-	<img src="../images/prototyping/basic_sketch.JPG" alt="notebook sketch" style="max-width: 500px">
+	<img src="../images/prototyping/basic_sketch.JPG" alt="notebook sketch" id="notebook-sketch">
 </div>
 <p style="margin-top: 20px;">This was our initial sketch of the application. It showcases the minimal functions of our requirements:</p>
 <ol>
@@ -63,7 +65,9 @@ permalink: /deliverables/
 4. Initially, some users reported that they did not know how to go back to the home screen. We iterated by replacing the profile menu with a hamburger menu. We made the hamburger menu more apparent, and subsequent testers did not have the same issue.
 5. Users liked the idea of having a sound alarm telling them that they are drowsy.  
 <br><br>
-For more information on the evaluation of the paper prototype, please visit [this link](https://drive.google.com/file/d/1OSQ1SdMF6oObkApD-TcTJ2zRFK4-cG2N/view?usp=sharing).
+
+<a href="https://drive.google.com/file/d/1OSQ1SdMF6oObkApD-TcTJ2zRFK4-cG2N/view?usp=sharing" id="download-button" class="btn-large waves-effect waves-light green" target="_blank">Evaluation on paper prototype</a>
+
 <br>  
 <hr>
 
@@ -107,4 +111,62 @@ For more information on the evaluation of the paper prototype, please visit [thi
 </div>
 
 <h3>Key takeaways from testing:</h3>
-1. 
+1. The design is very simple and straightforward - “When I go to the homepage, it’s very clear what I should do”
+2. Improvement Opportunity: Design could be more aesthetically pleasing. It would be cleaner to have just one button to record and stop.
+3. Improvement Opportunity: Black on gray for the buttons makes it difficult to see.
+4. Improvement Opportunity: Users found the "History" page to be unnecessary. When users imagine themselves using the application, they do not want to be in their cars fumbling through their phone. They would rather open the application and drive away.
+
+<br>
+<hr>
+
+## Final Android Application
+
+<div class="slider">     
+	<div>             
+		<img src="../images/finalprototype/app-loaded.png" title="Application loaded and seek agreement to ToS" alt="App loaded" max-height="400px">         
+	</div>
+	<div>             
+		<img src="../images/finalprototype/home-screen.png" title="Application Home Screen" alt="Home Screen" max-height="400px">         
+	</div>
+	<div>             
+		<img src="../images/finalprototype/navbar.png" title="Navigation button pressed" alt="Navigation button pressed" max-height="400px">         
+	</div> 
+	<div>             
+		<img src="../images/finalprototype/settings.png" title="Settings page" alt="Settings page" max-height="400px">         
+	</div> 
+	<div>             
+		<img src="../images/finalprototype/help.png" title="Help page" alt="Help page" max-height="400px">         
+	</div>   
+</div>
+
+<br>
+<hr>
+
+## Headset
+
+<p>We chose to leverage OpenBCI (Open Source Brain-Computer Interface) to help us obtain our project objective. OpenBCI provides the necessary tools to sample the electrical activity of a person's body. With the design provided by OpenBCI, we 3D printed the headset to save on cost. The following pictures show the evolution of the headset being built:</p>
+
+<div class="slider">     
+	<div>             
+		<img src="../images/headset/partial-3d.png" title="Headset partially printed" alt="Headset partially printed" max-height="400px">         
+	</div>
+	<div>             
+		<img src="../images/headset/3d-printed.png" title="Headset skeleton 3D printed" alt="Headset skeleton 3D printed" max-height="400px">         
+	</div>
+	<div>             
+		<img src="../images/headset/final-headset.png" title="Headset with the Ganglion Board attached" alt="Headset with the Ganglion Board attached" max-height="400px">         
+	</div>   
+</div>
+
+<br>
+<hr>
+
+## Final Video
+
+<iframe src="https://drive.google.com/file/d/1AJApwqWwFDb3OA7MgB8jHHpsg6hkpSF6/preview" width="640" height="480"></iframe>
+
+## Final Presentation
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQYSzdlMPEC77nZFIb8SMjq3KwlmBaArLFonzRX37PVYiqEuxx_V3vmwKA3J1g-mTP7KQAimfAglwFb/embed?start=false&loop=true&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+</div>

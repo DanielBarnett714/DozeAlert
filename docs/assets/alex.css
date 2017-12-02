@@ -2,6 +2,11 @@ p, li, .c6, .c16, .c1, .c19, .c20, .c0 {
 	font-size: 1em;
 }
 
+img {
+	max-width: 100%;
+	height: auto;
+}
+
 section, .c11 {
 	padding-top: 0;
 }
@@ -19,4 +24,8 @@ footer {
 
 .bx-wrapper {
 	margin: auto;
+}
+
+#notebook-sketch {
+	width: 500px;
 }

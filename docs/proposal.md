@@ -6,6 +6,7 @@ permalink: /Proposal/
 
 <h1 class="page-title">{{ page.title | escape }}</h1>
 
+<div class="container">
 <div class="section">
     <h1 class="c11" id="h.4lqp25cx7kth">
         <span>Table of Contents</span>
@@ -1172,4 +1173,5 @@ permalink: /Proposal/
             <span class="c40 c43">, https://en.wikipedia.org/wiki/Alpha_wave</span>
         </p>
     </div>
+</div>
 </div>

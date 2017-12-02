@@ -6,6 +6,8 @@ permalink: /needfinding/
 
 <h1 class="page-title">{{ page.title | escape }}</h1>
 
+
+<div class="container">
 <h2>Overview</h2>
 <p>Our needfinding methodology is tri-fold. We want to target University of Rochester resources to be our test subjects, since they are the most convenient to us. Thus, our first step was to survey the general student population. Secondly, we interviewed a few students. And lastly, we interviewed a professor from the Brain and Cognitive Science department.</p>
 
@@ -50,3 +52,5 @@ permalink: /needfinding/
 <p style="margin-bottom:10px;">For the final step in our needfinding process, we interviewed Professor Ralph Haefner from the BCS department. The purpose of this interview was to gain a better understanding of the brain and of methods to analyze data coming from EEG signals. Daniel is a student of Professor Haefner, so it was convenient to get his perspective on the viability of our project.</p>
 
 <p style="margin-bottom:10px;">Although Professor Haefner had not heard of OpenBCI, which is the open source library we using to manipulate the brain data, he seemed very interested in our project. During the interview, he mentioned that using EEG signals are great in trying to determine if someone is drowsy. Of course, there are other methods, but the brain is a reliable source for assessing attention. He proposed a few methods of analyzing data including using a fast Fourier transformation algorithm, which validates our initial hypotheses. And finally, he believes that our project is possible to achieve, and stresses the importance of finding the most non-obtrusive method of alerting the user while driving.</p>
+
+</div>
