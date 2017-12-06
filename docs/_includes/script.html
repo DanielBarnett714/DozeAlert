@@ -11,4 +11,98 @@
     	slideWidth: 270
       });
     });
-</script>	
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script>
+	var ctx = $("#accuracyChart");
+	var accuracyChart = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	        labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+	        datasets: [{
+	            label: 'Count of Rating',
+	            data: [0,0,0,0,0,2,2,4,2,0],
+	            backgroundColor:
+	                'rgba(140,208,168, 0.2)'
+	            ,
+	            borderColor: 'rgba(140,208,168, 1)',
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	        title: {
+	        	display: true,
+	        	text: 'On a scale of 1-10, what would you rate the accuracy?'
+	        },
+	        scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function (value) { if (Number.isInteger(value)) { return value; } },
+                        stepSize: 1
+                    }
+                }]
+            }
+	    }
+	});
+
+	ctx = $("#interfaceChart");
+	var interfaceChart = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	        labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+	        datasets: [{
+	            label: 'Count of Rating',
+	            data: [0,0,0,0,0,0,0,1,4,5],
+	            backgroundColor:
+	                'rgba(41,154,238, 0.2)'
+	            ,
+	            borderColor: 'rgba(41,154,238, 1)',
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	        title: {
+	        	display: true,
+	        	text: 'On a scale of 1-10, what would you rate the interface?'
+	        },
+	        scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function (value) { if (Number.isInteger(value)) { return value; } },
+                        stepSize: 1
+                    }
+                }]
+            }
+	    }
+	});
+
+	ctx = $("#usePieChart");
+	var usePieChart = new Chart(ctx, {
+	    type: 'pie',
+	    data: {
+	        labels: ["Yes", "No"],
+	        datasets: [{
+	            label: 'Count of Rating',
+	            data: [8,2],
+	            backgroundColor:[
+	                'rgba(48,172,98, 0.2)',
+	                'rgba(255, 99, 132, 0.2)'
+	            ],
+	            borderColor: [
+	            	'rgba(48,172,98, 1)',
+	            	'rgba(255, 99, 132, 1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	        title: {
+	        	display: true,
+	        	text: 'Would you use this headset?'
+	        }
+	    }
+	});
+
+</script>

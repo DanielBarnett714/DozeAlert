@@ -17,6 +17,10 @@ footer {
 	color: #7c8081;*/
 }
 
+iframe {
+	max-width: 100%;
+}
+
 .survey-image{
 	max-width: 60%;
 	height: auto;
@@ -40,7 +44,11 @@ footer {
 .section {
     min-height: 100%; /* required - makes the sections act like pages */
     padding-top: 75px; /* how tall is the persistent nav bar at the top? */
-    padding-bottom: 25px; /* typical - keep content away from the next section */
+    padding-bottom: 50px; /* typical - keep content away from the next section */
+}
+
+.deliverable:nth-child(odd){
+	background-color: #EFEFEF;
 }
 
 .column1, .column2 {
@@ -50,6 +58,37 @@ footer {
 	padding-right: 20px;
 	vertical-align: top;
 }
+
+/*	****************************************
+	Block Quotes
+	**************************************** */
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #299AEE;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #299AEE;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote:after {
+  color: #299AEE;
+  content: close-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
 
 /*Mobile Responsive Media tags*/
 @media (max-width: 960px) {
@@ -63,6 +102,7 @@ footer {
 @media (max-width: 720px) {
 	.column1, .column2 {
 		display: block;
+		width: 100%;
 		padding-left: 0px;
 		padding-right: 0px;
 	}
@@ -74,6 +114,7 @@ footer {
 	}
 	.column1, .column2 {
 		display: block;
+		width: 100%;
 		padding-left: 0px;
 		padding-right: 0px;
 	}
@@ -82,6 +123,7 @@ footer {
 @media (max-width: 390px) {
 	.column1, .column2 {
 		display: block;
+		width: 100%;
 		padding-left: 0px;
 		padding-right: 0px;
 	}
