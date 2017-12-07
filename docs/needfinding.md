@@ -36,7 +36,7 @@ permalink: /needfinding/
 </div>
 
 <p style="margin-bottom:10px;">Finally, another fact that we wanted to ascertain in our survey was how to best alert the user. Thus, we asked a question about where a person typically puts his or her phone while driving and the best method that his or her phone gets his or her attention. We discovered that 78.8 percent of the people surveyed keep their phone in the cup holders. And sound and phone vibration typically gets their attention the easiest. We will use these findings when developing our prototypes and final application.</p>
-  
+<a href="https://drive.google.com/file/d/1Huaigdoe7WHFo9XucB5kjA8qLeJ_2CF2/view?usp=sharing" class="btn-large waves-effect waves-light green" target="_blank" style="margin-top: 20px;">Raw Survey Results</a>
 <br>
 <hr>
 
@@ -44,7 +44,7 @@ permalink: /needfinding/
 <p style="margin-bottom:10px;">A total of three end-user interviews were conducted. The purpose of these interviews was to gain further understanding of the qualitative side of the responses to the survey. These interviews were conducted individually and in a casual setting in order to ensure that the interviewees were comfortable and did not feel judged or criticized of their opinions and beliefs on driving. We chose to interview people who held valid driver license and have driving experience, because we wanted to see if actual drivers could picture themselves using a device like ours. An individual who do not have driving experience, for example, may not know common struggles of driving like forgetting to release the emergency brakes on a car before pressing on the gas pedal, and more. Thus, it was important to target people who actually drive.</p>
 
 <p style="margin-bottom:10px;">From the interviews, there were four key takeaways. All three interviewees unequivocally said that the biggest fear that they have when driving is getting into an accident. Secondly, they all said, to some variation, that driving while sleepy, tired, or drowsy is “wrong and dangerous.” Thirdly, they said that they would be willing to rest if they were notified that they were drowsy. This comes with a condition, however. All of them agreed that the application is a great idea, but they would be less likely to take a nap if the commute to their destination is short, for example like a 15-minute drive to the grocery store. But their corrective action would be to just drive more cautiously. And when the commute is long, at least 30 minutes, they would be more inclined to pull over at a rest stop or hotel to get some sleep. Finally, we also discovered that despite the risk in looking at one’s phone while driving, people will still do it anyways. Two of our interviewees check their phones when they are at a stop, and one of them checks his phone when driving on a highway with a straight road. These findings were very interesting, and they buttress the motivation of our project.</p>
-
+<a href="https://drive.google.com/file/d/1HdphMS85DcMcbI1iBE8Q1MJRaZKOjHLF/view?usp=sharing" class="btn-large waves-effect waves-light green" target="_blank" style="margin-top: 20px;">Raw Interview Questions</a>
 <br>
 <hr>
 
