@@ -38,6 +38,12 @@ ol {
 	display: none;
 }
 
+h1.page-title {
+	padding-top: 150px;
+	padding-bottom: 150px;
+	border-bottom: 10px solid #29b6f6;
+}
+
 #notebook-sketch {
 	width: 500px;
 }
