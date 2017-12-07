@@ -4,7 +4,9 @@ title: Needfinding
 permalink: /needfinding/
 ---
 
-<h1 class="page-title">{{ page.title | escape }}</h1>
+<div class="page-background">
+	<h1 class="page-title">{{ page.title | escape }}</h1>
+</div>
 
 
 <div class="container">

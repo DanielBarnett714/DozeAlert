@@ -4,7 +4,9 @@ title: Team
 permalink: /team/
 ---
 
-<h1 class="page-title">{{ page.title | escape }}</h1>
+<div class="page-background">
+    <h1 class="page-title">{{ page.title | escape }}</h1>
+</div>
 
 <div class="container">
   <table class="c66">

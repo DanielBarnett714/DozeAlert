@@ -38,10 +38,22 @@ ol {
 	display: none;
 }
 
+.page-background:before {
+	content: "";
+    position: absolute;
+    z-index: -1;
+    background: url(../images/headset/final-headset.JPG) no-repeat fixed center;
+    background-size: cover;
+    width: 100%;
+    height: 445px;
+    filter: blur(2px) grayscale(1);
+}
+
 h1.page-title {
-	padding-top: 150px;
-	padding-bottom: 150px;
-	border-bottom: 10px solid #29b6f6;
+	padding-top: 200px;
+	padding-bottom: 200px;
+	z-index: 0;
+	/*border-bottom: 10px solid #29b6f6;*/
 }
 
 #notebook-sketch {
