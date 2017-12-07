@@ -15,7 +15,7 @@ permalink: /implementation/
 		</div>
 		<div class="column2">
 			<h2 class="center">What is OpenBCI?</h2>
-			<p style="margin-top: 20px;">OpenBCI stands for Open Source Brain-Computer Interface. It is a company that builds open source biosensing boards that can record EEG, EMG, and accelerometer activity. Along with developing the software necessary to interact and record data from the BCI, they also release the schematics for the headset that physically holds the boards. We 3D printed the headsets, assembled the headset, and purchased the wiring and dry electrods for the board's inputs.</p>
+			<p style="margin-top: 20px;">OpenBCI stands for Open Source Brain-Computer Interface. It is a company that builds open source biosensing boards that can record EEG, EMG, and accelerometer activity. Along with developing the software necessary to interact and record data from the BCI, they also release the schematics for the headset that physically holds the boards. We 3D printed the headsets, assembled the headset, and purchased the wiring and dry electrodes for the board's inputs.</p>
 		</div>
 	</div>
 </section>
@@ -34,9 +34,7 @@ permalink: /implementation/
 
 <section class="section">
 	<div class="container">
-		<div class="column1">
-			<img src="../images/implementation/fft-plot.png" alt="FFT Plot">
-		</div>
+
 		<div class="column2">
 			<h2 class="center">Implementation</h2>
 			<p style="margin-top: 20px;">We wrote the code in Kotlin for Android.</p>
@@ -57,6 +55,10 @@ permalink: /implementation/
 				<li>If drowsyVal > 0.8 AND drowsyVal < (value from sensitivity bar) THEN drowsy = true. The 0.8 is a constant that we coded based on our initial testing with users. We noticed that the majority of people's drowsyVal would drop to around that value. However we needed a lower bound because there were testers whose drowsyVal would drop as soon as they go from a relaxed state to an excited state. The upper bound is determined by a sensitivity bar value. We initially used a machine learning decision tree, however users were upset with the many tests needed for the algorithm to learn the user's brain waves, so we decided to give the user the control.</li>
 				<li>Once the consecutive count threshold has been reached for drowsy = true, THEN alert the user</li>
 			</ol>
+		</div>
+
+		<div class="column1">
+			<img src="../images/implementation/fft-plot.png" alt="FFT Plot" style="max-width: 500px;">
 		</div>
 	</div>
 </section>
