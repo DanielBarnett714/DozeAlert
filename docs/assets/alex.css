@@ -21,6 +21,10 @@ iframe {
 	max-width: 100%;
 }
 
+ol {
+	padding: 10px;
+}
+
 .survey-image{
 	max-width: 60%;
 	height: auto;

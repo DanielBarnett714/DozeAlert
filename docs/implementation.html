@@ -1,0 +1,88 @@
+---
+layout: page
+title: Implementation
+permalink: /implementation/
+---
+
+
+<h1 class="page-title">{{ page.title | escape }}</h1>
+
+
+<section class="section">
+	<div class="container">
+		<div class="column1">
+			<img src="../images/implementation/headset.jpg" alt="OpenBCI headset">
+		</div>
+		<div class="column2">
+			<h2 class="center">What is OpenBCI?</h2>
+			<p style="margin-top: 20px;">OpenBCI stands for Open Source Brain-Computer Interface. It is a company that builds open source biosensing boards that can record EEG, EMG, and accelerometer activity. Along with developing the software necessary to interact and record data from the BCI, they also release the schematics for the headset that physically holds the boards. We 3D printed the headsets, assembled the headset, and purchased the wiring and dry electrods for the board's inputs.</p>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="column1">
+			<img src="../images/implementation/ganglion_board.jpg" alt="OpenBCI Ganglion Board">
+		</div>
+		<div class="column2">
+			<h2 class="center">Ganglion Board</h2>
+			<p style="margin-top: 20px;">We purchased the cheapest OpenBCI board, the Ganglion Board. This board has 4 channels and streams via Bluetooth Low Energy at 200Hz. At first we thought that this would not be enough, but Android communicates at 100Hz, and we in turn had to scale down the data stream.</p>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="column1">
+			<img src="../images/implementation/fft-plot.png" alt="FFT Plot">
+		</div>
+		<div class="column2">
+			<h2 class="center">Implementation</h2>
+			<p style="margin-top: 20px;">We wrote the code in Kotlin for Android.</p>
+			<ol>
+				<li>Decompress and process data from Bluetooth stream, converting it to volts</li>
+				<li>Perform a Fast-Fourier Transformation on each channel</li>
+				<li>Average the FFT outputs</li>
+				<li>Perform smoothing on the FFT average. This reduces noise</li>
+				<li>Calculate the amplitudes of the brain waves by frequencies:
+					<ul>
+						<li>Delta: 0.5-4.0Hz</li>
+						<li>Theta: 4.0-8.0Hz</li>
+						<li>Alpha: 8.0-13.0HZ</li>
+						<li>Beta: 13.0-30.0Hz</li>
+					</ul>
+				</li>
+				<li>Calculate drowsyVal = (&alpha; + &theta;) / &beta;. We tested a lot of ratios before we concluded on this one. For example, when we wrote our proposal, based on our research we initially thought that (&theta; + &gamma;) / (&alpha; + &beta;) would yield the best result. However, based on testing we concluded that (&alpha; + &theta;) / &beta; would best suit our needs.</li>
+				<li>If drowsyVal > 0.8 AND drowsyVal < (value from sensitivity bar) THEN drowsy = true. The 0.8 is a constant that we coded based on our initial testing with users. We noticed that the majority of people's drowsyVal would drop to around that value. However we needed a lower bound because there were testers whose drowsyVal would drop as soon as they go from a relaxed state to an excited state. The upper bound is determined by a sensitivity bar value. We initially used a machine learning decision tree, however users were upset with the many tests needed for the algorithm to learn the user's brain waves, so we decided to give the user the control.</li>
+				<li>Once the consecutive count threshold has been reached for drowsy = true, THEN alert the user</li>
+			</ol>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="column1">
+			<img src="../images/implementation/participant_1.png" alt="Output from participant">
+		</div>
+		<div class="column2">
+			<h2 class="center">Testing Data from Participant 1</h2>
+			<a href="https://github.com/DanielBarnett714/DozeAlert/blob/master/docs/images/implementation/braindata-awake-p1.csv" class="btn-large waves-effect waves-light green" target="_blank" style="margin-top: 20px;">Brain Awake Data</a>
+			<a href="https://github.com/DanielBarnett714/DozeAlert/blob/master/docs/images/implementation/braindata-drowsy-p1.csv" class="btn-large waves-effect waves-light blue" target="_blank" style="margin-top: 20px;">Brain Drowsy Data</a>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="column2">
+			<h2 class="center">Testing Data from Participant 2</h2>
+			<a href="https://github.com/DanielBarnett714/DozeAlert/blob/master/docs/images/implementation/braindata-awake-p2.csv" class="btn-large waves-effect waves-light green" target="_blank" style="margin-top: 20px;">Brain Awake Data</a>
+			<a href="https://github.com/DanielBarnett714/DozeAlert/blob/master/docs/images/implementation/braindata-drowsy-p2.csv" class="btn-large waves-effect waves-light blue" target="_blank" style="margin-top: 20px;">Brain Drowsy Data</a>
+		</div>
+		<div class="column1">
+			<img src="../images/implementation/participant_2.png" alt="Output from participant">
+		</div>
+	</div>
+</section>
