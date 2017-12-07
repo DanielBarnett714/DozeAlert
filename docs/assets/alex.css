@@ -47,8 +47,13 @@ iframe {
     padding-bottom: 50px; /* typical - keep content away from the next section */
 }
 
-.deliverable:nth-child(odd){
+.deliverable:nth-child(even){
 	background-color: #EFEFEF;
+}
+
+.gray-section {
+	background-color: #EFEFEF;
+
 }
 
 .column1, .column2 {
